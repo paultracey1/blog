@@ -126,3 +126,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
 )
 
+DISQUS_WEBSITE_SHORTNAME = 'mybootcampblog'
+SITE_ID = 1
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
