@@ -134,3 +134,7 @@ SITE_ID = 1
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+DEFAULT_FROM_EMAIL = 'paul@example.com'
+# this is where emails appear to come from when your app sends an email
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
