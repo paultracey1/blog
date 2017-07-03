@@ -3,6 +3,8 @@ from django.utils import timezone
 from .models import Post
 
 from .forms import BlogPostForm
+
+from django.contrib.auth.decorators import login_required
  
  
 def post_list(request):
@@ -28,6 +30,7 @@ def post_detail(request, id):
     post.save()
     return render(request, "postdetail.html", {'post': post})
 
+@login_required(login_url='/accounts/login')
 def new_post(request):
     if request.method == "POST":
         form = BlogPostForm(request.POST, request.FILES)

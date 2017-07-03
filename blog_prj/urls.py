@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import include, url
 from django.contrib import admin
-
+from django.conf import settings
 from django.views.static import serve
 from .settings import MEDIA_ROOT
 
@@ -27,8 +27,14 @@ from accounts import urls as accounts_urls
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', post_list, name='index'),
-    url(r'^blog/', include(blog_urls)),
+    url(r'', include(blog_urls)),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
     url(r'^user/', include(accounts_urls)),
 
 ]
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns
